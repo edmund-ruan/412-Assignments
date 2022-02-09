@@ -1,15 +1,17 @@
-const evaluate = expression => {
-        switch (expression.charAt(1)) {
+const evaluate = ([left, operatorSign, right]) => {
+        switch (operatorSign) {
             case '+':
-                return (expression) => Number(expression.charAt(0)) + Number(expression.charAt(2))
+                return expression => Number(left) + Number(right);
             case '-':
-                return (expression) => Number(expression.charAt(0)) - Number(expression.charAt(2))
+                return expression => Number(left) - Number(right);
             case '*':
-                return (expression) => Number(expression.charAt(0)) * Number(expression.charAt(2))
-            case '^':
-                return (expression) => Number(expression.charAt(0)) ** Number(expression.charAt(2))
+                return expression => Number(left) * Number(right);
             case '/':
-                return (expression) => Number(expression.charAt(0)) / Number(expression.charAt(2))
+                return expression => Number(left) / Number(right);
+            case '^':
+                return expression => Number(left) ** Number(right);
+            case '%':
+                return expression => Number(left) % Number(right);
             default:
                 return new Error('Not an operator')
         }

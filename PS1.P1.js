@@ -1,4 +1,4 @@
-function reverseString(text) {
+const reverseString = text => {
     let codeArray = [];
 
     for (let letterInd = 0; letterInd < text.length; letterInd++) {
