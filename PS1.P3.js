@@ -9,29 +9,14 @@ let replaceAs = stringAndDecorate('supercalifragilisticexpialidocious',
     up => up.replaceAll('a','A')
 )
 
-console.table({
-    originalString: 'supercalifragilisticexpialidocious',
-    modifiedString: replaceAs,
-    numberReplaced: replaceAs.split('A').length - 1,
-    length: replaceAs.length }
-)
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
+function out(str) {
+    let obj = {
+        originalString: str,
+        modifiedString: replaceAs,
+        numberReplaced: replaceAs.split('A').length - 1,
+        length: replaceAs.length }
+    return obj;
+}
 
-const doMath = (value, operation) => operation(value);
-let result = doMath(
-    30,
-    val => val + 12
-)
-console.log(result);
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-const doMath = (value, operation) => operation(value);
-function evaluate(t) {
-    return doMath()
-};
-
-const expression = '8%3';
-let operator = evaluate(expression);
-console.log(`${expression} = ${operator(expression)}`)
+console.table(out('supercalifragilisticexpialidocious'))

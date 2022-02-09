@@ -1,47 +1,36 @@
-
-
-function evaluateHelper(expression) {
-    console.log(expression.charAt(1));
-    switch (expression.charAt(1)) {
-        case '+':
-            return (left, right) => left + right;
-        case '-':
-            return (left, right) => left - right;
-        case '*':
-            return (left, right) => left * right;
-        case '/':
-            return (left, right) => left / right;
-        case '^':
-            return (left, right) => left ** right;
-    }
+const evaluate = expression => {
+        switch (expression.charAt(1)) {
+            case '+':
+                return (expression) => Number(expression.charAt(0)) + Number(expression.charAt(2))
+            case '-':
+                return (expression) => Number(expression.charAt(0)) - Number(expression.charAt(2))
+            case '*':
+                return (expression) => Number(expression.charAt(0)) * Number(expression.charAt(2))
+            case '^':
+                return (expression) => Number(expression.charAt(0)) ** Number(expression.charAt(2))
+            case '/':
+                return (expression) => Number(expression.charAt(0)) / Number(expression.charAt(2))
+            default:
+                return new Error('Not an operator')
+        }
 }
 
-const identity = v => v;
-identity('wow'); // wow
-
-const evaluate = identity((a,b) => a + b);
-
-const sum = identity((a,b) => a + b);
-sum(1,8); //9
-
-
-
-
-
-
-const expression = '8%3';
+const expression = '4+2';
 let operator = evaluate(expression);
 console.log(`${expression} = ${operator(expression)}`)
 
+const expression2 = '5*7';
+let operator2 = evaluate(expression2);
+console.log(`${expression2} = ${operator2(expression2)}`)
 
-const getOperation = operator => {
-    switch (operator) {
-        case '+':
-            return (left, right) => left + right;
-            break;
-    }
-}
-let mathFunction = getOperation('+');
-console.log(mathFunction(30,12))
+const expression3 = '6-1';
+let operator3 = evaluate(expression3);
+console.log(`${expression3} = ${operator3(expression3)}`)
 
+const expression4 = '9/2';
+let operator4 = evaluate(expression4);
+console.log(`${expression4} = ${operator4(expression4)}`)
 
+const expression5 = '2^8';
+let operator5 = evaluate(expression5);
+console.log(`${expression5} = ${operator5(expression5)}`)
